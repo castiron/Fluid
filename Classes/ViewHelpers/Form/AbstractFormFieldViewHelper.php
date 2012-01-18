@@ -90,6 +90,8 @@ abstract class AbstractFormFieldViewHelper extends \TYPO3\Fluid\ViewHelpers\Form
 		if ($this->hasArgument('value')) {
 			$value = $this->arguments['value'];
 		} elseif ($this->hasMappingErrorOccured()) {
+			// ZD - CIC Change - need to add identity properties even if there is an error.
+			$this->addAdditionalIdentityPropertiesIfNeeded();
 			$value = $this->getLastSubmittedFormData();
 		} elseif ($this->isObjectAccessorMode() && $this->viewHelperVariableContainer->exists('TYPO3\Fluid\ViewHelpers\FormViewHelper', 'formObject')) {
 			$this->addAdditionalIdentityPropertiesIfNeeded();
